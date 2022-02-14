@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="94d2afba-ce88-4ea7-872a-3a509e8dbe5b" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pic/自研rpc (1).jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tiger/rpc/config/ProviderMeta.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tiger/rpc/config/ServerMetaConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tiger/rpc/constant/TigerRpcConstant.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tiger/rpc/info/RpcRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tiger/rpc/info/RpcResp.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tiger/rpc/netty/NettyServer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tiger/rpc/netty/NettyServerInitialize.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tiger/rpc/netty/handler/NettyDecoderServerHandler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tiger/rpc/netty/handler/NettyEncoderServerHandler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tiger/rpc/netty/handler/NettyServerRpcHandler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tiger/rpc/register/zk/ZkConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tiger/rpc/register/zk/ZkServerRegister.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tiger/rpc/server/IServer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tiger/rpc/utils/IPUtil.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tiger/rpc/utils/ProtostuffUtils.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tiger/rpc/wrapper/RpcRequestWrapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tiger/rpc/wrapper/RpcResponseWrapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tiger-rpc.iml" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="D:\jetbrain\IntelliJ IDEA 2020.2.3\plugins\maven\lib\maven3" />
+        <option name="userSettingsFile" value="D:\java study\apache-maven-3.5.2\conf\settting-bak.xml" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="23PHG2vOquVn0lXCg1MpmFPIela" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/pic" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="settings.editor.selected.configurable" value="MavenSettings" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.tiger.rpc.utils" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\java study\tiger-rpc\pic" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="94d2afba-ce88-4ea7-872a-3a509e8dbe5b" name="Default Changelist" comment="" />
+      <created>1641628705232</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1641628705232</updated>
+      <workItem from="1641628706505" duration="18554000" />
+      <workItem from="1644717348138" duration="17000" />
+      <workItem from="1644717387100" duration="1860000" />
+      <workItem from="1644720043266" duration="3367000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="3965" y="236" key="#com.intellij.ide.util.MemberChooser" timestamp="1641774045985">
+      <screen x="3200" y="0" width="1920" height="1040" />
+    </state>
+    <state x="3965" y="236" key="#com.intellij.ide.util.MemberChooser/0.0.1829.989/3200.0.1920.1040@3200.0.1920.1040" timestamp="1641774045985" />
+    <state x="3959" y="84" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1641711031285">
+      <screen x="3200" y="0" width="1920" height="1040" />
+    </state>
+    <state x="3959" y="84" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1829.989/3200.0.1920.1040@3200.0.1920.1040" timestamp="1641711031285" />
+    <state x="3940" y="274" key="FileChooserDialogImpl" timestamp="1641628748119">
+      <screen x="3200" y="0" width="1920" height="1040" />
+    </state>
+    <state x="3940" y="274" key="FileChooserDialogImpl/0.0.1829.989/3200.0.1920.1040@3200.0.1920.1040" timestamp="1641628748119" />
+    <state x="3661" y="164" key="SettingsEditor" timestamp="1644718778217">
+      <screen x="3200" y="0" width="1920" height="1040" />
+    </state>
+    <state x="3661" y="164" key="SettingsEditor/0.0.1829.989/3200.0.1920.1040@3200.0.1920.1040" timestamp="1644718778217" />
+    <state width="498" height="446" key="SwitcherDM" timestamp="1644720273945">
+      <screen x="3200" y="0" width="1920" height="1040" />
+    </state>
+    <state width="498" height="446" key="SwitcherDM/0.0.1829.989/3200.0.1920.1040@3200.0.1920.1040" timestamp="1644720273945" />
+    <state x="3751" y="203" key="new project wizard" timestamp="1644719247787">
+      <screen x="3200" y="0" width="1920" height="1040" />
+    </state>
+    <state x="3751" y="203" key="new project wizard/0.0.1829.989/3200.0.1920.1040@3200.0.1920.1040" timestamp="1644719247787" />
+    <state x="3823" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1641706826208">
+      <screen x="3200" y="0" width="1920" height="1040" />
+    </state>
+    <state x="3823" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1829.989/3200.0.1920.1040@3200.0.1920.1040" timestamp="1641706826208" />
+  </component>
+</project>
