@@ -43,6 +43,7 @@ public class HelloServiceImpl implements HelloService{
 ## 整体实现方式  
 
 ## todo
+- 实现SPI机制，支持多注册中心，多协议化方式
 - client本地存储server的注册表，不用每次都到zk去拉取
 - netty的交互方式是否有优化的空间
 - 使用自定义协议代替protostuff

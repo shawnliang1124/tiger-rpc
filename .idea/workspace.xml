@@ -5,37 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="94d2afba-ce88-4ea7-872a-3a509e8dbe5b" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pic/自研rpc (1).jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/tiger/rpc/config/ProviderMeta.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/tiger/rpc/config/ServerMetaConfig.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/tiger/rpc/constant/TigerRpcConstant.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/tiger/rpc/info/RpcRequest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/tiger/rpc/info/RpcResp.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/tiger/rpc/netty/NettyServer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/tiger/rpc/netty/NettyServerInitialize.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/tiger/rpc/netty/handler/NettyDecoderServerHandler.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/tiger/rpc/netty/handler/NettyEncoderServerHandler.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/tiger/rpc/netty/handler/NettyServerRpcHandler.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/tiger/rpc/register/zk/ZkConfig.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/tiger/rpc/register/zk/ZkServerRegister.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/tiger/rpc/server/IServer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/tiger/rpc/utils/IPUtil.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/tiger/rpc/utils/ProtostuffUtils.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/tiger/rpc/wrapper/RpcRequestWrapper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/tiger/rpc/wrapper/RpcResponseWrapper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tiger-rpc.iml" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tiger-client-demo/tiger-client-demo.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tiger-client-starter/tiger-client-starter.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tiger-core/tiger-core.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tiger-server-demo/tiger-server-demo.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tiger-server-starter/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/tiger-server-starter/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tiger-server-starter/tiger-server-starter.iml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,7 +36,7 @@
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
-        <option name="mavenHome" value="D:\jetbrain\IntelliJ IDEA 2020.2.3\plugins\maven\lib\maven3" />
+        <option name="mavenHome" value="$APPLICATION_HOME_DIR$/plugins/maven/lib/maven3" />
         <option name="userSettingsFile" value="D:\java study\apache-maven-3.5.2\conf\settting-bak.xml" />
       </MavenGeneralSettings>
     </option>
@@ -69,10 +50,10 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/pic" />
-    <property name="project.structure.last.edited" value="Project" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/tiger-server-starter/pom.xml" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
-    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="MavenSettings" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -108,7 +89,7 @@
       <workItem from="1641628706505" duration="18554000" />
       <workItem from="1644717348138" duration="17000" />
       <workItem from="1644717387100" duration="1860000" />
-      <workItem from="1644720043266" duration="3367000" />
+      <workItem from="1644720043266" duration="10026000" />
     </task>
     <servers />
   </component>
@@ -124,22 +105,22 @@
       <screen x="3200" y="0" width="1920" height="1040" />
     </state>
     <state x="3959" y="84" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1829.989/3200.0.1920.1040@3200.0.1920.1040" timestamp="1641711031285" />
-    <state x="3940" y="274" key="FileChooserDialogImpl" timestamp="1641628748119">
+    <state x="3940" y="274" key="FileChooserDialogImpl" timestamp="1645021417556">
       <screen x="3200" y="0" width="1920" height="1040" />
     </state>
-    <state x="3940" y="274" key="FileChooserDialogImpl/0.0.1829.989/3200.0.1920.1040@3200.0.1920.1040" timestamp="1641628748119" />
-    <state x="3661" y="164" key="SettingsEditor" timestamp="1644718778217">
+    <state x="3940" y="274" key="FileChooserDialogImpl/0.0.1829.989/3200.0.1920.1040@3200.0.1920.1040" timestamp="1645021417556" />
+    <state x="3654" y="131" key="SettingsEditor" timestamp="1645240857254">
       <screen x="3200" y="0" width="1920" height="1040" />
     </state>
-    <state x="3661" y="164" key="SettingsEditor/0.0.1829.989/3200.0.1920.1040@3200.0.1920.1040" timestamp="1644718778217" />
+    <state x="3654" y="131" key="SettingsEditor/0.0.1829.989/3200.0.1920.1040@3200.0.1920.1040" timestamp="1645240857254" />
     <state width="498" height="446" key="SwitcherDM" timestamp="1644720273945">
       <screen x="3200" y="0" width="1920" height="1040" />
     </state>
     <state width="498" height="446" key="SwitcherDM/0.0.1829.989/3200.0.1920.1040@3200.0.1920.1040" timestamp="1644720273945" />
-    <state x="3751" y="203" key="new project wizard" timestamp="1644719247787">
+    <state x="3751" y="203" key="new project wizard" timestamp="1645240200206">
       <screen x="3200" y="0" width="1920" height="1040" />
     </state>
-    <state x="3751" y="203" key="new project wizard/0.0.1829.989/3200.0.1920.1040@3200.0.1920.1040" timestamp="1644719247787" />
+    <state x="3751" y="203" key="new project wizard/0.0.1829.989/3200.0.1920.1040@3200.0.1920.1040" timestamp="1645240200206" />
     <state x="3823" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1641706826208">
       <screen x="3200" y="0" width="1920" height="1040" />
     </state>
