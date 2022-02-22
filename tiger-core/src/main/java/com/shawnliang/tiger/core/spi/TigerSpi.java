@@ -23,10 +23,4 @@ public @interface TigerSpi {
      */
     String fileName() default "";
 
-    /**
-     * 是否是单例，默认是true
-     * @return
-     */
-    boolean isSingleton() default true;
-
 }

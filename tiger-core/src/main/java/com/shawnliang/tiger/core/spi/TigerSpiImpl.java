@@ -29,4 +29,10 @@ public @interface TigerSpiImpl {
      */
     int order() default 0;
 
+    /**
+     * 是否是单例，默认是true
+     * @return
+     */
+    boolean isSingleton() default true;
+
 }

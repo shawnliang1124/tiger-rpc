@@ -1,3 +1,7 @@
-.idea
 .target
 *.iml
+.idea
+./tiger-client-starter/target/
+./tiger-core/target/
+./tiger-server-starter/target/
+
