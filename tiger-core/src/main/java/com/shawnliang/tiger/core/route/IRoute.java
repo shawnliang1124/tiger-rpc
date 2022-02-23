@@ -1,6 +1,7 @@
 package com.shawnliang.tiger.core.route;
 
 import com.shawnliang.tiger.core.common.ServiceInfo;
+import com.shawnliang.tiger.core.spi.TigerSpi;
 import java.util.List;
 
 /**
@@ -9,6 +10,7 @@ import java.util.List;
  * @author : Phoebe
  * @date : Created in 2022/2/13
  */
+@TigerSpi
 public interface IRoute {
 
     /**

@@ -1,0 +1,2 @@
+loadBalance=com.shawnliang.tiger.core.route.LoadBalanceRoute
+random=com.shawnliang.tiger.core.route.RandomRoute

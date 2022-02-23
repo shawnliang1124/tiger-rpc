@@ -1,6 +1,6 @@
 package com.shawnliang.tiger.core;
 
-import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -10,6 +10,8 @@ import java.util.Enumeration;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
+import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 
 /**
  * Description :   .
@@ -17,6 +19,7 @@ import java.util.concurrent.ConcurrentMap;
  * @author : Phoebe
  * @date : Created in 2022/2/20
  */
+@Slf4j
 public class TigerConfigs {
 
     private final static ConcurrentMap<String, Object> TIGER_CONFIG_MAP
@@ -30,16 +33,25 @@ public class TigerConfigs {
      * 初始化
      */
     private static void init() {
+        try {
+            String result = loadSpiCustom("rpc-config-default.json");
+            log.info("result is : {} ", result);
+            Map map = JSONObject.parseObject(result, Map.class);
+            TIGER_CONFIG_MAP.putAll(map);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
      * 加载spi相关目录
      * @param path
      */
-    private static void loadSpiCustom(String path) throws IOException {
+    private static String loadSpiCustom(String path) throws IOException {
         ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
         Enumeration<URL> urls  = classLoader != null ? classLoader.getResources(path)
                 : ClassLoader.getSystemClassLoader().getResources(path);
+        StringBuilder context = new StringBuilder();
 
         if (urls != null) {
             while (urls.hasMoreElements()) {
@@ -50,12 +62,11 @@ public class TigerConfigs {
                     input = new InputStreamReader(url.openStream(), StandardCharsets.UTF_8);
                     reader = new BufferedReader(input);
 
-                    StringBuilder context = new StringBuilder();
+
                     String line;
                     while ((line = reader.readLine()) != null) {
                         context.append(line).append("\n");
                     }
-                    Map map = JSON.parseObject(context.toString(), Map.class);
                 } finally {
                     if (reader != null) {
                         reader.close();
@@ -68,6 +79,44 @@ public class TigerConfigs {
             }
         }
 
+        return context.toString();
     }
+
+    public static String getDefaultString(String key) {
+        if (!StringUtils.isBlank(key)) {
+           return TIGER_CONFIG_MAP.get(key) == null ? null : (String) TIGER_CONFIG_MAP.get(key);
+        }
+
+        return null;
+    }
+
+    public static void putValue(String key, Object newValue) {
+        TIGER_CONFIG_MAP.put(key, newValue);
+    }
+
+    public static Boolean getDefaultBoolean(String key) {
+        if (!StringUtils.isBlank(key)) {
+            return TIGER_CONFIG_MAP.get(key) == null ? null : (Boolean) TIGER_CONFIG_MAP.get(key);
+        }
+
+        return null;
+    }
+
+    public static Integer getDefaultInteger(String key) {
+        if (!StringUtils.isBlank(key)) {
+            return TIGER_CONFIG_MAP.get(key) == null ? null : (Integer) TIGER_CONFIG_MAP.get(key);
+        }
+
+        return null;
+    }
+
+    public static Long getDefaultLong(String key) {
+        if (!StringUtils.isBlank(key)) {
+            return TIGER_CONFIG_MAP.get(key) == null ? null : (Long) TIGER_CONFIG_MAP.get(key);
+        }
+
+        return null;
+    }
+
 
 }
