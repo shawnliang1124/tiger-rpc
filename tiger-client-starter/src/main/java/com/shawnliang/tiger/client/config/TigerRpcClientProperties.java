@@ -14,8 +14,24 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 public class TigerRpcClientProperties {
 
 
+    /**
+     * 注册中心地址
+     */
     private String discoveryAddr;
 
+    /**
+     * 超时时间
+     */
     private Long timeout;
+
+    /**
+     * 注册的类型
+     */
+    private String registry;
+
+    /**
+     * 负载均衡路由
+     */
+    private String routeStrategy;
 
 }

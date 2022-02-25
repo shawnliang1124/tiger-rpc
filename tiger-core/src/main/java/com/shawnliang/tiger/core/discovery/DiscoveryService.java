@@ -1,6 +1,7 @@
 package com.shawnliang.tiger.core.discovery;
 
 import com.shawnliang.tiger.core.common.ServiceInfo;
+import com.shawnliang.tiger.core.spi.TigerSpi;
 
 /**
  * Description :  注册 .
@@ -8,6 +9,7 @@ import com.shawnliang.tiger.core.common.ServiceInfo;
  * @author : Phoebe
  * @date : Created in 2022/2/13
  */
+@TigerSpi
 public interface DiscoveryService {
 
     /**

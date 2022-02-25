@@ -1,5 +1,6 @@
 package com.shawnliang.tiger.core.common;
 
+import java.util.List;
 import lombok.Data;
 
 /**
@@ -20,4 +21,6 @@ public class ServiceInfo {
     private String address;
 
     private Integer port;
+
+    private List<String> spiPaths;
 }

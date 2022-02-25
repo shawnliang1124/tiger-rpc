@@ -1,6 +1,7 @@
 package com.shawnliang.tiger.core.register;
 
 import com.shawnliang.tiger.core.common.ServiceInfo;
+import com.shawnliang.tiger.core.spi.TigerSpi;
 import java.io.IOException;
 
 /**
@@ -9,6 +10,7 @@ import java.io.IOException;
  * @author : Phoebe
  * @date : Created in 2022/2/13
  */
+@TigerSpi
 public interface RegistryService {
 
     void register(ServiceInfo serviceInfo) throws Exception;

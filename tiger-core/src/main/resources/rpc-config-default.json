@@ -1,0 +1,23 @@
+/*
+本文件为SOFA RPC客户端内置的默认配置文件。
+用户可以在自己的工程中自定义rpc-config.json进行默认配置覆盖。
+所有的属性均可配置。（通过-D或者setProperty）
+
+PS:大家也看到了，本JSON文档是支持注释的，而标准JSON是不支持的，这属于宽松的的json格式
+*/
+{
+  "default.registry": "zookeeper",
+  "default.protocol": "protostuff",
+  "default.proxy": "jdk",
+  "default.charset": "utf-8",
+  "default.transport": "netty4",
+
+  // client端的配置
+  "default.client.timeout": 3000,
+  "default.client.discoveryAddr": "",
+  "default.route.strategy": "loadBalance",
+
+  // server端的配置
+  "default.server.port": 11000,
+  "default.server.registryAddr": ""
+}

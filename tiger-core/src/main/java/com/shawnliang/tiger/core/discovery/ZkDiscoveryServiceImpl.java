@@ -2,6 +2,7 @@ package com.shawnliang.tiger.core.discovery;
 
 import com.shawnliang.tiger.core.common.ServiceInfo;
 import com.shawnliang.tiger.core.route.IRoute;
+import com.shawnliang.tiger.core.spi.TigerSpiImpl;
 import java.util.Collection;
 import java.util.stream.Collectors;
 import lombok.extern.slf4j.Slf4j;
@@ -21,6 +22,7 @@ import org.springframework.util.CollectionUtils;
  * @date : Created in 2022/2/13
  */
 @Slf4j
+@TigerSpiImpl(value = "zookeeper")
 public class ZkDiscoveryServiceImpl implements DiscoveryService {
 
     public static final int BASE_SLEEP_TIME_MS = 1000;

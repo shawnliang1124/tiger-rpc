@@ -1,6 +1,7 @@
 package com.shawnliang.tiger.core.register;
 
 import com.shawnliang.tiger.core.common.ServiceInfo;
+import com.shawnliang.tiger.core.spi.TigerSpiImpl;
 import java.io.IOException;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.curator.framework.CuratorFramework;
@@ -18,6 +19,7 @@ import org.apache.curator.x.discovery.details.JsonInstanceSerializer;
  * @date : Created in 2022/2/13
  */
 @Slf4j
+@TigerSpiImpl(value = "zookeeper")
 public class ZkRegistryServiceImpl implements RegistryService {
     public static final int BASE_SLEEP_TIME_MS = 1000;
     public static final int MAX_RETRIES = 3;
