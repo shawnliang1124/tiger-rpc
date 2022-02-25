@@ -22,7 +22,7 @@ public class TigerRpcServerHandler extends SimpleChannelInboundHandler<TigerRpcR
     protected void channelRead0(ChannelHandlerContext ctx,
             TigerRpcRequest tigerRpcRequest) throws Exception {
 
-        log.error("receive tigerRpcRequest: {}", tigerRpcRequest);
+        log.info("receive tigerRpcRequest: {}", tigerRpcRequest);
         // 处理请求
         if (tigerRpcRequest != null) {
             // 找到serviceName对应的真正代理类

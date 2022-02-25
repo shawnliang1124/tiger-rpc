@@ -72,10 +72,9 @@ public class TigerRpcClientAutoConfiguration {
 
         TigerSpiClass<? extends DiscoveryService> spiClass = TigerSpiClassLoaderFactory
                 .getSpiLoader(DiscoveryService.class).getSpiClass(registry);
-        DiscoveryService discoveryServiceImpl = spiClass.getInstance(new Class[]{String.class, IRoute.class},
-                new Object[]{clientAddr, route});
 
-        return discoveryServiceImpl;
+        return spiClass.getInstance(new Class[]{String.class, IRoute.class},
+                new Object[]{clientAddr, route});
     }
 
     @Bean
@@ -91,8 +90,11 @@ public class TigerRpcClientAutoConfiguration {
 
     @Bean
     @DependsOn(value = {"discoveryService", "rpcClientProperties"})
-    public TigerRpcClientProcessor clientProcessor(@Autowired TigerRpcClientTransport clientTransport,
-            @Autowired DiscoveryService discoveryService, @Autowired ClientStubProxyFactory proxyFactory, @Autowired TigerRpcClientProperties rpcClientProperties) {
+    public TigerRpcClientProcessor clientProcessor(
+            @Autowired TigerRpcClientTransport clientTransport,
+            @Autowired DiscoveryService discoveryService,
+            @Autowired ClientStubProxyFactory proxyFactory,
+            @Autowired TigerRpcClientProperties rpcClientProperties) {
 
         return new TigerRpcClientProcessor(clientTransport, discoveryService, proxyFactory, rpcClientProperties);
     }
