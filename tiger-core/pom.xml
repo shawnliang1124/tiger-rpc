@@ -93,6 +93,13 @@
       <scope>test</scope>
     </dependency>
 
+<!--fastjson版本大于1.2.61-->
+    <dependency>
+      <groupId>com.alibaba</groupId>
+      <artifactId>fastjson</artifactId>
+      <version>1.2.73</version>
+    </dependency>
+
   </dependencies>
 
   <build>
