@@ -47,7 +47,7 @@ public class HelloServiceImpl implements HelloService{
 - client本地存储server的注册表，不用每次都到zk去拉取
 - netty的交互方式是否有优化的空间
 - 使用自定义协议代替protostuff
-- 动态代理多实现，包括javassist, cglib的编码学习
+- ~~动态代理多实现，包括javassist, cglib的编码学习(已完成)~~
 
 
 

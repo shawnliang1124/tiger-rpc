@@ -1,1 +1,0 @@
-org.springframework.boot.autoconfigure.EnableAutoConfiguration=com.shawnliang.tiger.client.config.TigerRpcClientAutoConfiguration

@@ -1,0 +1,2 @@
+jdk = com.shawnliang.tiger.client.proxy.JdkTigerProxy
+javassist = com.shawnliang.tiger.client.proxy.JavassistProxy

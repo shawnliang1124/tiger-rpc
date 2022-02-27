@@ -84,7 +84,7 @@ public class TigerConfigs {
 
     public static String getDefaultString(String key) {
         if (!StringUtils.isBlank(key)) {
-           return TIGER_CONFIG_MAP.get(key) == null ? null : (String) TIGER_CONFIG_MAP.get(key);
+           return TIGER_CONFIG_MAP.get(key) == null ? null : ((String) TIGER_CONFIG_MAP.get(key)).trim();
         }
 
         return null;

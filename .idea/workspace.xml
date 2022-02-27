@@ -5,31 +5,47 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="94d2afba-ce88-4ea7-872a-3a509e8dbe5b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/tiger-core/src/main/java/com/shawnliang/tiger/core/utils/TigerClassUtils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tiger-core/src/test/java/com/shawnliang/tiger/core/SpiTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tiger-core/src/test/resources/META-INF/tiger-rpc/com.shawnliang.tiger.core.register.RegistryService" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tiger-core/target/classes/com/shawnliang/tiger/core/TigerConfigs.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tiger-core/target/classes/com/shawnliang/tiger/core/common/TigerRpcConstant.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tiger-core/target/classes/com/shawnliang/tiger/core/spi/TigerSpi.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tiger-core/target/classes/com/shawnliang/tiger/core/spi/TigerSpiClass.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tiger-core/target/classes/com/shawnliang/tiger/core/spi/TigerSpiClassLoaderFactory.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tiger-core/target/classes/com/shawnliang/tiger/core/spi/TigerSpiImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tiger-core/target/classes/com/shawnliang/tiger/core/spi/TigerSpiLoader.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tiger-core/target/classes/com/shawnliang/tiger/core/utils/TigerClassUtils.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tiger-core/target/test-classes/META-INF/tiger-rpc/com.shawnliang.tiger.core.register.RegistryService" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tiger-core/target/test-classes/com/shawnliang/tiger/core/SpiTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tiger-client-starter/src/main/java/com/shawnliang/tiger/client/invoker/ClientInvoker.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tiger-client-starter/src/main/java/com/shawnliang/tiger/client/proxy/JavassistProxy.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tiger-client-starter/src/main/java/com/shawnliang/tiger/client/proxy/JdkTigerProxy.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tiger-client-starter/src/main/java/com/shawnliang/tiger/client/proxy/javaassist/UselessInvocationHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tiger-client-starter/src/main/resources/META-INF/tiger-rpc/com.shawnliang.tiger.core.proxy.TigerProxy" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tiger-core/src/main/java/com/shawnliang/tiger/core/cache/ReflectCache.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tiger-core/src/main/java/com/shawnliang/tiger/core/factory/TigerRpcRequestFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tiger-core/src/main/java/com/shawnliang/tiger/core/invoker/Invoker.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tiger-core/src/main/java/com/shawnliang/tiger/core/proxy/TigerProxy.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tiger-core/src/main/java/com/shawnliang/tiger/core/utils/ClassLoaderUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tiger-core/src/main/java/com/shawnliang/tiger/core/utils/ClassTypeUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tiger-core/src/main/java/com/shawnliang/tiger/core/utils/ReflectUtils.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tiger-client-demo/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/tiger-client-demo/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tiger-client-demo/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/tiger-client-demo/target/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tiger-client-starter/src/main/java/com/shawnliang/tiger/client/config/TigerRpcClientAutoConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/tiger-client-starter/src/main/java/com/shawnliang/tiger/client/config/TigerRpcClientAutoConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tiger-client-starter/src/main/java/com/shawnliang/tiger/client/config/TigerRpcClientProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/tiger-client-starter/src/main/java/com/shawnliang/tiger/client/config/TigerRpcClientProcessor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tiger-client-starter/src/main/java/com/shawnliang/tiger/client/config/TigerRpcClientProperties.java" beforeDir="false" afterPath="$PROJECT_DIR$/tiger-client-starter/src/main/java/com/shawnliang/tiger/client/config/TigerRpcClientProperties.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tiger-client-starter/src/main/java/com/shawnliang/tiger/client/handler/TigerRpcInvocationHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/tiger-client-starter/src/main/java/com/shawnliang/tiger/client/handler/TigerRpcInvocationHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tiger-client-starter/src/main/java/com/shawnliang/tiger/client/proxy/ClientStubProxyFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/tiger-client-starter/src/main/java/com/shawnliang/tiger/client/proxy/ClientStubProxyFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tiger-client-starter/target/classes/META-INF/spring.factories" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tiger-client-starter/target/classes/com/shawnliang/tiger/client/annonations/TigerRpcReference.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tiger-client-starter/target/classes/com/shawnliang/tiger/client/config/TigerRpcClientAutoConfiguration.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tiger-client-starter/target/classes/com/shawnliang/tiger/client/config/TigerRpcClientProcessor.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tiger-client-starter/target/classes/com/shawnliang/tiger/client/config/TigerRpcClientProperties.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tiger-client-starter/target/classes/com/shawnliang/tiger/client/handler/TigerRpcClientHandler.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tiger-client-starter/target/classes/com/shawnliang/tiger/client/handler/TigerRpcInvocationHandler.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tiger-client-starter/target/classes/com/shawnliang/tiger/client/initilize/NettyClientInitializer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tiger-client-starter/target/classes/com/shawnliang/tiger/client/proxy/ClientStubProxyFactory.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tiger-client-starter/target/classes/com/shawnliang/tiger/client/transport/NettyRpcClientTransport.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tiger-client-starter/target/classes/com/shawnliang/tiger/client/transport/TigerRpcClientTransport.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tiger-client-starter/target/classes/com/shawnliang/tiger/client/transport/TigerRpcResponseFuture.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tiger-client-starter/target/classes/com/shawnliang/tiger/client/transport/TransMetaInfo$TransMetaInfoBuilder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tiger-client-starter/target/classes/com/shawnliang/tiger/client/transport/TransMetaInfo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tiger-client-starter/target/classes/com/shawnliang/tiger/client/transport/TransportCache.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/tiger-core/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/tiger-core/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tiger-core/src/main/java/com/shawnliang/tiger/core/register/RegistryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/tiger-core/src/main/java/com/shawnliang/tiger/core/register/RegistryService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tiger-core/src/main/java/com/shawnliang/tiger/core/register/ZkRegistryServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/tiger-core/src/main/java/com/shawnliang/tiger/core/register/ZkRegistryServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tiger-core/src/main/java/com/shawnliang/tiger/core/spi/TigerSpi.java" beforeDir="false" afterPath="$PROJECT_DIR$/tiger-core/src/main/java/com/shawnliang/tiger/core/spi/TigerSpi.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tiger-core/src/main/java/com/shawnliang/tiger/core/spi/TigerSpiClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/tiger-core/src/main/java/com/shawnliang/tiger/core/spi/TigerSpiClass.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tiger-core/src/main/java/com/shawnliang/tiger/core/spi/TigerSpiImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/tiger-core/src/main/java/com/shawnliang/tiger/core/spi/TigerSpiImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tiger-core/src/main/java/com/shawnliang/tiger/core/TigerConfigs.java" beforeDir="false" afterPath="$PROJECT_DIR$/tiger-core/src/main/java/com/shawnliang/tiger/core/TigerConfigs.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tiger-core/src/main/java/com/shawnliang/tiger/core/spi/TigerSpiLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/tiger-core/src/main/java/com/shawnliang/tiger/core/spi/TigerSpiLoader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tiger-core/target/classes/com/shawnliang/tiger/core/common/ServiceInfo.class" beforeDir="false" afterPath="$PROJECT_DIR$/tiger-core/target/classes/com/shawnliang/tiger/core/common/ServiceInfo.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tiger-core/target/classes/com/shawnliang/tiger/core/register/RegistryService.class" beforeDir="false" afterPath="$PROJECT_DIR$/tiger-core/target/classes/com/shawnliang/tiger/core/register/RegistryService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tiger-core/target/classes/com/shawnliang/tiger/core/register/ZkRegistryServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/tiger-core/target/classes/com/shawnliang/tiger/core/register/ZkRegistryServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tiger-core/src/main/java/com/shawnliang/tiger/core/utils/TigerClassUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/tiger-core/src/main/java/com/shawnliang/tiger/core/utils/TigerClassUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tiger-server-starter/target/classes/com/shawnliang/tiger/server/config/TigerRpcServerAutoConfiguration.class" beforeDir="false" afterPath="$PROJECT_DIR$/tiger-server-starter/target/classes/com/shawnliang/tiger/server/config/TigerRpcServerAutoConfiguration.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tiger-server-starter/target/classes/com/shawnliang/tiger/server/handler/TigerRpcServerHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/tiger-server-starter/target/classes/com/shawnliang/tiger/server/handler/TigerRpcServerHandler.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,7 +68,7 @@
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
-        <option name="mavenHome" value="$APPLICATION_HOME_DIR$/plugins/maven/lib/maven3" />
+        <option name="mavenHome" value="D:\jetbrain\IntelliJ IDEA 2020.2.3\plugins\maven\lib\maven3" />
         <option name="userSettingsFile" value="D:\java study\apache-maven-3.5.2\conf\settting-bak.xml" />
       </MavenGeneralSettings>
     </option>
@@ -63,10 +79,14 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/tiger-server-starter/pom.xml" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/tiger-core/src/main/resources/META-INF/tiger-rpc" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -78,19 +98,31 @@
       <recent name="com.tiger.rpc.utils" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\java study\tiger-rpc\tiger-core\src\main\resources\META-INF\tiger-rpc" />
       <recent name="D:\java study\tiger-rpc\pic" />
     </key>
   </component>
-  <component name="RunManager">
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+  <component name="RunManager" selected="Spring Boot.ClientApp">
+    <configuration name="TigerConfigs" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.shawnliang.tiger.core.TigerConfigs" />
+      <module name="tiger-core" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.shawnliang.tiger.core.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -111,8 +143,37 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="ClientApp" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="tiger-client-demo" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.shawnliang.client.demo.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.shawnliang.client.demo.ClientApp" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ServerApp" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="tiger-server-demo" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.shawnliang.server.demo.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.shawnliang.server.demo.ServerApp" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Spring Boot.ClientApp" />
+        <item itemvalue="Spring Boot.ServerApp" />
+        <item itemvalue="Application.TigerConfigs" />
         <item itemvalue="JUnit.SpiTest.ZookeeperSpi" />
       </list>
     </recent_temporary>
@@ -129,7 +190,8 @@
       <workItem from="1644717348138" duration="17000" />
       <workItem from="1644717387100" duration="1860000" />
       <workItem from="1644720043266" duration="10026000" />
-      <workItem from="1645326341271" duration="19479000" />
+      <workItem from="1645326341271" duration="30839000" />
+      <workItem from="1645842077269" duration="33443000" />
     </task>
     <servers />
   </component>
@@ -141,86 +203,125 @@
       <screen x="3200" y="0" width="1920" height="1040" />
     </state>
     <state x="3640" y="94" key="#Project_Structure/0.0.1829.989/3200.0.1920.1040@3200.0.1920.1040" timestamp="1645544932254" />
-    <state x="3778" y="320" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1645545053418">
+    <state x="3778" y="320" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1645865617763">
       <screen x="3200" y="0" width="1920" height="1040" />
     </state>
-    <state x="3778" y="320" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1829.989/3200.0.1920.1040@3200.0.1920.1040" timestamp="1645545053418" />
-    <state x="3965" y="236" key="#com.intellij.ide.util.MemberChooser" timestamp="1645543243995">
+    <state x="3778" y="320" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1829.989/3200.0.1920.1040@3200.0.1920.1040" timestamp="1645865617763" />
+    <state x="3965" y="236" key="#com.intellij.ide.util.MemberChooser" timestamp="1645867880012">
       <screen x="3200" y="0" width="1920" height="1040" />
     </state>
-    <state x="3965" y="236" key="#com.intellij.ide.util.MemberChooser/0.0.1829.989/3200.0.1920.1040@3200.0.1920.1040" timestamp="1645543243995" />
-    <state x="3959" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1645544022214">
+    <state x="3965" y="236" key="#com.intellij.ide.util.MemberChooser/0.0.1829.989/3200.0.1920.1040@3200.0.1920.1040" timestamp="1645867880012" />
+    <state x="3649" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1645865223494">
       <screen x="3200" y="0" width="1920" height="1040" />
     </state>
-    <state x="3959" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1829.989/3200.0.1920.1040@3200.0.1920.1040" timestamp="1645544022214" />
-    <state x="3915" y="226" key="#xdebugger.evaluate" timestamp="1645545410684">
+    <state x="3649" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1829.989/3200.0.1920.1040@3200.0.1920.1040" timestamp="1645865223494" />
+    <state x="3915" y="226" key="#xdebugger.evaluate" timestamp="1645892874555">
       <screen x="3200" y="0" width="1920" height="1040" />
     </state>
-    <state x="3915" y="226" key="#xdebugger.evaluate/0.0.1829.989/3200.0.1920.1040@3200.0.1920.1040" timestamp="1645545410684" />
+    <state x="3915" y="226" key="#xdebugger.evaluate/0.0.1829.989/3200.0.1920.1040@3200.0.1920.1040" timestamp="1645892874555" />
+    <state width="758" height="438" key="DebuggerActiveHint" timestamp="1645893644417">
+      <screen x="3200" y="0" width="1920" height="1040" />
+    </state>
+    <state width="758" height="438" key="DebuggerActiveHint/0.0.1829.989/3200.0.1920.1040@3200.0.1920.1040" timestamp="1645893644417" />
     <state x="3940" y="274" key="FileChooserDialogImpl" timestamp="1645021417556">
       <screen x="3200" y="0" width="1920" height="1040" />
     </state>
     <state x="3940" y="274" key="FileChooserDialogImpl/0.0.1829.989/3200.0.1920.1040@3200.0.1920.1040" timestamp="1645021417556" />
-    <state width="1878" height="348" key="GridCell.Tab.0.bottom" timestamp="1645545454273">
+    <state width="1877" height="313" key="GridCell.Tab.0.bottom" timestamp="1645932179309">
       <screen x="3200" y="0" width="1920" height="1040" />
     </state>
-    <state width="1878" height="348" key="GridCell.Tab.0.bottom/0.0.1829.989/3200.0.1920.1040@3200.0.1920.1040" timestamp="1645545454273" />
-    <state width="1878" height="348" key="GridCell.Tab.0.center" timestamp="1645545454272">
+    <state width="1877" height="313" key="GridCell.Tab.0.bottom/0.0.1829.989/3200.0.1920.1040@3200.0.1920.1040" timestamp="1645932179309" />
+    <state width="1877" height="313" key="GridCell.Tab.0.center" timestamp="1645932179309">
       <screen x="3200" y="0" width="1920" height="1040" />
     </state>
-    <state width="1878" height="348" key="GridCell.Tab.0.center/0.0.1829.989/3200.0.1920.1040@3200.0.1920.1040" timestamp="1645545454272" />
-    <state width="1878" height="348" key="GridCell.Tab.0.left" timestamp="1645545454272">
+    <state width="1877" height="313" key="GridCell.Tab.0.center/0.0.1829.989/3200.0.1920.1040@3200.0.1920.1040" timestamp="1645932179309" />
+    <state width="1877" height="313" key="GridCell.Tab.0.left" timestamp="1645932179309">
       <screen x="3200" y="0" width="1920" height="1040" />
     </state>
-    <state width="1878" height="348" key="GridCell.Tab.0.left/0.0.1829.989/3200.0.1920.1040@3200.0.1920.1040" timestamp="1645545454272" />
-    <state width="1878" height="348" key="GridCell.Tab.0.right" timestamp="1645545454273">
+    <state width="1877" height="313" key="GridCell.Tab.0.left/0.0.1829.989/3200.0.1920.1040@3200.0.1920.1040" timestamp="1645932179309" />
+    <state width="1877" height="313" key="GridCell.Tab.0.right" timestamp="1645932179309">
       <screen x="3200" y="0" width="1920" height="1040" />
     </state>
-    <state width="1878" height="348" key="GridCell.Tab.0.right/0.0.1829.989/3200.0.1920.1040@3200.0.1920.1040" timestamp="1645545454273" />
-    <state width="1878" height="348" key="GridCell.Tab.1.bottom" timestamp="1645545450374">
+    <state width="1877" height="313" key="GridCell.Tab.0.right/0.0.1829.989/3200.0.1920.1040@3200.0.1920.1040" timestamp="1645932179309" />
+    <state width="1877" height="313" key="GridCell.Tab.1.bottom" timestamp="1645932175749">
       <screen x="3200" y="0" width="1920" height="1040" />
     </state>
-    <state width="1878" height="348" key="GridCell.Tab.1.bottom/0.0.1829.989/3200.0.1920.1040@3200.0.1920.1040" timestamp="1645545450374" />
-    <state width="1878" height="348" key="GridCell.Tab.1.center" timestamp="1645545450374">
+    <state width="1877" height="313" key="GridCell.Tab.1.bottom/0.0.1829.989/3200.0.1920.1040@3200.0.1920.1040" timestamp="1645932175749" />
+    <state width="1877" height="313" key="GridCell.Tab.1.center" timestamp="1645932175749">
       <screen x="3200" y="0" width="1920" height="1040" />
     </state>
-    <state width="1878" height="348" key="GridCell.Tab.1.center/0.0.1829.989/3200.0.1920.1040@3200.0.1920.1040" timestamp="1645545450374" />
-    <state width="1878" height="348" key="GridCell.Tab.1.left" timestamp="1645545450374">
+    <state width="1877" height="313" key="GridCell.Tab.1.center/0.0.1829.989/3200.0.1920.1040@3200.0.1920.1040" timestamp="1645932175749" />
+    <state width="1877" height="313" key="GridCell.Tab.1.left" timestamp="1645932175749">
       <screen x="3200" y="0" width="1920" height="1040" />
     </state>
-    <state width="1878" height="348" key="GridCell.Tab.1.left/0.0.1829.989/3200.0.1920.1040@3200.0.1920.1040" timestamp="1645545450374" />
-    <state width="1878" height="348" key="GridCell.Tab.1.right" timestamp="1645545450374">
+    <state width="1877" height="313" key="GridCell.Tab.1.left/0.0.1829.989/3200.0.1920.1040@3200.0.1920.1040" timestamp="1645932175749" />
+    <state width="1877" height="313" key="GridCell.Tab.1.right" timestamp="1645932175749">
       <screen x="3200" y="0" width="1920" height="1040" />
     </state>
-    <state width="1878" height="348" key="GridCell.Tab.1.right/0.0.1829.989/3200.0.1920.1040@3200.0.1920.1040" timestamp="1645545450374" />
+    <state width="1877" height="313" key="GridCell.Tab.1.right/0.0.1829.989/3200.0.1920.1040@3200.0.1920.1040" timestamp="1645932175749" />
+    <state width="1877" height="313" key="GridCell.Tab.2.bottom" timestamp="1645932170062">
+      <screen x="3200" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="313" key="GridCell.Tab.2.bottom/0.0.1829.989/3200.0.1920.1040@3200.0.1920.1040" timestamp="1645932170062" />
+    <state width="1877" height="313" key="GridCell.Tab.2.center" timestamp="1645932170061">
+      <screen x="3200" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="313" key="GridCell.Tab.2.center/0.0.1829.989/3200.0.1920.1040@3200.0.1920.1040" timestamp="1645932170061" />
+    <state width="1877" height="313" key="GridCell.Tab.2.left" timestamp="1645932170061">
+      <screen x="3200" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="313" key="GridCell.Tab.2.left/0.0.1829.989/3200.0.1920.1040@3200.0.1920.1040" timestamp="1645932170061" />
+    <state width="1877" height="313" key="GridCell.Tab.2.right" timestamp="1645932170061">
+      <screen x="3200" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="313" key="GridCell.Tab.2.right/0.0.1829.989/3200.0.1920.1040@3200.0.1920.1040" timestamp="1645932170061" />
     <state x="3654" y="131" key="SettingsEditor" timestamp="1645544579330">
       <screen x="3200" y="0" width="1920" height="1040" />
     </state>
     <state x="3654" y="131" key="SettingsEditor/0.0.1829.989/3200.0.1920.1040@3200.0.1920.1040" timestamp="1645544579330" />
-    <state width="498" height="456" key="SwitcherDM" timestamp="1645365335513">
+    <state width="498" height="498" key="SwitcherDM" timestamp="1645893522968">
       <screen x="3200" y="0" width="1920" height="1040" />
     </state>
-    <state width="498" height="456" key="SwitcherDM/0.0.1829.989/3200.0.1920.1040@3200.0.1920.1040" timestamp="1645365335513" />
-    <state x="3862" y="252" width="651" height="536" key="find.popup" timestamp="1645544942183">
+    <state width="498" height="498" key="SwitcherDM/0.0.1829.989/3200.0.1920.1040@3200.0.1920.1040" timestamp="1645893522968" />
+    <state width="968" height="528" key="XDebugger.FullValuePopup" timestamp="1645892269077">
       <screen x="3200" y="0" width="1920" height="1040" />
     </state>
-    <state x="3862" y="252" width="651" height="536" key="find.popup/0.0.1829.989/3200.0.1920.1040@3200.0.1920.1040" timestamp="1645544942183" />
+    <state width="968" height="528" key="XDebugger.FullValuePopup/0.0.1829.989/3200.0.1920.1040@3200.0.1920.1040" timestamp="1645892269077" />
+    <state x="3862" y="252" width="651" height="536" key="find.popup" timestamp="1645890219499">
+      <screen x="3200" y="0" width="1920" height="1040" />
+    </state>
+    <state x="3862" y="252" width="651" height="536" key="find.popup/0.0.1829.989/3200.0.1920.1040@3200.0.1920.1040" timestamp="1645890219499" />
     <state x="3751" y="203" key="new project wizard" timestamp="1645240200206">
       <screen x="3200" y="0" width="1920" height="1040" />
     </state>
     <state x="3751" y="203" key="new project wizard/0.0.1829.989/3200.0.1920.1040@3200.0.1920.1040" timestamp="1645240200206" />
-    <state x="3823" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1645542549618">
+    <state x="3823" y="230" width="672" height="673" key="search.everywhere.popup" timestamp="1645887962778">
       <screen x="3200" y="0" width="1920" height="1040" />
     </state>
-    <state x="3823" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1829.989/3200.0.1920.1040@3200.0.1920.1040" timestamp="1645542549618" />
+    <state x="3823" y="230" width="672" height="673" key="search.everywhere.popup/0.0.1829.989/3200.0.1920.1040@3200.0.1920.1040" timestamp="1645887962778" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/tiger-core/src/main/java/com/shawnliang/tiger/core/spi/TigerSpiLoader.java</url>
+          <url>file://$PROJECT_DIR$/tiger-core/src/main/java/com/shawnliang/tiger/core/register/ZkRegistryServiceImpl.java</url>
+          <line>62</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/tiger-server-starter/src/main/java/com/shawnliang/tiger/server/config/TigerRpcProvider.java</url>
           <line>66</line>
-          <option name="timeStamp" value="3" />
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/tiger-core/src/main/java/com/shawnliang/tiger/core/spi/TigerSpiLoader.java</url>
+          <line>179</line>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/tiger-client-starter/src/main/java/com/shawnliang/tiger/client/proxy/JavassistProxy.java</url>
+          <line>121</line>
+          <option name="timeStamp" value="22" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -47,6 +47,9 @@ public class TigerRpcClientAutoConfiguration {
                 ifPresent(registry -> TigerConfigs.putValue(TigerConfigConstant.REGISTRY_KEY, registry));
         Optional.ofNullable(properties.getRouteStrategy()).
                 ifPresent(route -> TigerConfigs.putValue(TigerConfigConstant.ROUTE_STRATEGY_KEY, route));
+        Optional.ofNullable(properties.getDefaultProxy()).ifPresent(proxy -> {
+            TigerConfigs.putValue(TigerConfigConstant.PROXY_KEY, proxy);
+        });
 
         return properties;
     }
@@ -90,7 +93,7 @@ public class TigerRpcClientAutoConfiguration {
 
     @Bean
     @DependsOn(value = {"discoveryService", "rpcClientProperties"})
-    public TigerRpcClientProcessor clientProcessor(
+    public static TigerRpcClientProcessor clientProcessor(
             @Autowired TigerRpcClientTransport clientTransport,
             @Autowired DiscoveryService discoveryService,
             @Autowired ClientStubProxyFactory proxyFactory,

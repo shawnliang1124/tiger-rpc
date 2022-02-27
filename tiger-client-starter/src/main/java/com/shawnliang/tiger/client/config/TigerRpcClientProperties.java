@@ -34,4 +34,6 @@ public class TigerRpcClientProperties {
      */
     private String routeStrategy;
 
+    private String defaultProxy;
+
 }

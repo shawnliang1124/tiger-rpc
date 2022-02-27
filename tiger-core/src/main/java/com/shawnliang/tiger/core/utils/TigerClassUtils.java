@@ -1,8 +1,11 @@
 package com.shawnliang.tiger.core.utils;
 
+import com.shawnliang.tiger.core.cache.ReflectCache;
+import com.shawnliang.tiger.core.exception.RpcException;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Modifier;
 import java.util.Arrays;
+import org.apache.commons.lang3.StringUtils;
 
 /**
  * Description :   .
@@ -69,6 +72,40 @@ public class TigerClassUtils {
             throw e;
         } catch (Throwable e) {
             throw new RuntimeException(e.getMessage(), e);
+        }
+    }
+
+    public static ClassLoader getCurrentClassLoader() {
+        ClassLoader cl = Thread.currentThread().getContextClassLoader();
+        if (cl == null) {
+            cl = ClassLoaderUtils.class.getClassLoader();
+        }
+        return cl == null ? ClassLoader.getSystemClassLoader() : cl;
+    }
+
+
+    /**
+     * 根据类名加载Class
+     *
+     * @param className 类名
+     * @return Class
+     */
+    public static Class forName(String className) {
+        return forName(className, true);
+    }
+
+    /**
+     * 根据类名加载Class
+     *
+     * @param className  类名
+     * @param initialize 是否初始化
+     * @return Class
+     */
+    public static Class forName(String className, boolean initialize) {
+        try {
+            return Class.forName(className, initialize, getCurrentClassLoader());
+        } catch (Exception e) {
+            throw new RpcException(e);
         }
     }
 
@@ -187,6 +224,69 @@ public class TigerClassUtils {
             return (T) Boolean.FALSE;
         }
         return null;
+    }
+
+    /**
+     * Class转String<br>
+     * 注意，得到的String可能不能直接用于Class.forName，请使用getClass(String)反向获取
+     *
+     * @param clazz Class
+     * @return 对象
+     */
+    public static String getTypeStr(Class<?> clazz) {
+        String typeStr = ReflectCache.getTypeStrCache(clazz);
+        if (typeStr == null) {
+            if (clazz.isArray()) {
+                String name = clazz.getName(); // 原始名字：[Ljava.lang.String;
+                typeStr = jvmNameToCanonicalName(name); // java.lang.String[]
+            } else {
+                typeStr = clazz.getName();
+            }
+            ReflectCache.putTypeStrCache(clazz, typeStr);
+        }
+        return typeStr;
+    }
+
+    /**
+     * JVM描述转通用描述
+     *
+     * @param jvmName 例如 [I;
+     * @return 通用描述 例如 int[]
+     */
+    public static String jvmNameToCanonicalName(String jvmName) {
+        boolean isArray = jvmName.charAt(0) == '[';
+        if (isArray) {
+            String cnName = StringUtils.EMPTY; // 计数，看上几维数组
+            int i = 0;
+            for (; i < jvmName.length(); i++) {
+                if (jvmName.charAt(i) != '[') {
+                    break;
+                }
+                cnName += "[]";
+            }
+            String componentType = jvmName.substring(i, jvmName.length());
+            if ("Z".equals(componentType)) {
+                cnName = "boolean" + cnName;
+            } else if ("B".equals(componentType)) {
+                cnName = "byte" + cnName;
+            } else if ("C".equals(componentType)) {
+                cnName = "char" + cnName;
+            } else if ("D".equals(componentType)) {
+                cnName = "double" + cnName;
+            } else if ("F".equals(componentType)) {
+                cnName = "float" + cnName;
+            } else if ("I".equals(componentType)) {
+                cnName = "int" + cnName;
+            } else if ("J".equals(componentType)) {
+                cnName = "long" + cnName;
+            } else if ("S".equals(componentType)) {
+                cnName = "short" + cnName;
+            } else {
+                cnName = componentType.substring(1, componentType.length() - 1) + cnName; // 对象的 去掉L
+            }
+            return cnName;
+        }
+        return jvmName;
     }
 
 }

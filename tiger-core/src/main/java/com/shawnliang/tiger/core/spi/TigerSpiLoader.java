@@ -10,7 +10,6 @@ import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.util.Enumeration;
 import java.util.Map;
-import java.util.Objects;
 import java.util.concurrent.ConcurrentHashMap;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
@@ -138,7 +137,7 @@ public class TigerSpiLoader<T> {
         }
 
         // 获取alias和content
-        String alias = keyValueFromContent[0];
+        String alias = keyValueFromContent[0].trim();
         String totalClass = keyValueFromContent[1];
 
         // 实例化class
@@ -177,7 +176,7 @@ public class TigerSpiLoader<T> {
 
         // 获取拓展点上的标识别名
         String value = tigerSpiImpl.value();
-        if (!Objects.equals(value, alias)) {
+        if (!StringUtils.equals(value.trim(), alias.trim())) {
             throw new IllegalArgumentException("error in persisting map, because tigerSpiImpl's value is: "
             + value + ", but alias in file is: " + alias);
         }

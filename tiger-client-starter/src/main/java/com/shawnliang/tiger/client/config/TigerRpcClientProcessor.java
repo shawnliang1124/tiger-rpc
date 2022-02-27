@@ -3,8 +3,14 @@ package com.shawnliang.tiger.client.config;
 import com.shawnliang.tiger.client.annonations.TigerRpcReference;
 import com.shawnliang.tiger.client.proxy.ClientStubProxyFactory;
 import com.shawnliang.tiger.client.transport.TigerRpcClientTransport;
+import com.shawnliang.tiger.client.transport.TransMetaInfo;
+import com.shawnliang.tiger.core.common.ServiceInfo;
+import com.shawnliang.tiger.core.common.TigerRpcRequest;
 import com.shawnliang.tiger.core.discovery.DiscoveryService;
+import com.shawnliang.tiger.core.exception.RpcException;
+import com.shawnliang.tiger.core.factory.TigerRpcRequestFactory;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.beans.factory.config.BeanFactoryPostProcessor;
@@ -57,13 +63,26 @@ public class TigerRpcClientProcessor implements BeanFactoryPostProcessor, Applic
                 ReflectionUtils.doWithFields(clazz, field -> {
                     TigerRpcReference tigerRpcReference = AnnotationUtils
                             .getAnnotation(field, TigerRpcReference.class);
+
+                    // 使用动态代理，代替Client端 @TigerRpcReference 注解标识的属性
                     if (tigerRpcReference != null) {
                         Object bean = applicationContext.getBean(clazz);
                         field.setAccessible(true);
+
+                        // 通过简单工厂模式，创建TigerRequest默认参数
+                        String serviceName = StringUtils.join(field.getType().getCanonicalName(), "_", tigerRpcReference.version());
+                        TigerRpcRequest tigerRpcRequest = TigerRpcRequestFactory
+                                .genDefaultRequest(serviceName);
+
+                        // 创建tcp连接时的请求对象
+                        TransMetaInfo transMetaInfo = buildTransMetaInfoWithoutRequest(serviceName);
+                        transMetaInfo.setRequest(tigerRpcRequest);
+
+                        // 获得代理对象
                         Object proxy = clientStubProxyFactory
-                                .getProxy(field.getType(), tigerRpcReference.version(), clientTransport,
-                                        discoveryService, properties);
-                        // 设置代理类
+                                .getProxy(field.getType(), transMetaInfo, clientTransport);
+
+                        // 使用代理类代替属性中的@TigerRpcReference 中的属性
                         ReflectionUtils.setField(field, bean, proxy);
                     }
                 });
@@ -76,5 +95,32 @@ public class TigerRpcClientProcessor implements BeanFactoryPostProcessor, Applic
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
         this.applicationContext = applicationContext;
+    }
+
+
+    /**
+     * 构建请求参数
+     * @return
+     */
+    private TransMetaInfo buildTransMetaInfoWithoutRequest(String serviceName){
+
+        ServiceInfo serviceInfo = null;
+        try {
+            serviceInfo = discoveryService.discovery(serviceName);
+        } catch (Exception e) {
+            log.error("discover service name exception", e);
+            throw new RpcException("discover service name exception!");
+        }
+        if (serviceInfo == null) {
+            throw new RpcException("service not found!");
+        }
+
+        return TransMetaInfo.builder()
+                .address(serviceInfo.getAddress())
+                .port(serviceInfo.getPort())
+                .timeout(properties.getTimeout())
+                .request(null)
+                .build();
+
     }
 }
