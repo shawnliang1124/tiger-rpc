@@ -33,4 +33,9 @@ public class TransMetaInfo {
      * 超时时间
      */
     private Long timeout;
+
+    /**
+     * 调用方式
+     */
+//    private String callType;
 }

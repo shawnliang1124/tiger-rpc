@@ -17,4 +17,10 @@ public interface TigerRpcClientTransport {
      */
     TigerRpcResponse sendRequest(TransMetaInfo transMetaInfo) throws Exception;
 
+    /**
+     * 异步发送信息
+     * @param transMetaInfo
+     */
+    void sendRequestAsync(TransMetaInfo transMetaInfo) throws Exception;
+
 }

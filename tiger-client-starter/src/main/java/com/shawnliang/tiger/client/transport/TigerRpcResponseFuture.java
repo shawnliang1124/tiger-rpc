@@ -18,6 +18,7 @@ public class TigerRpcResponseFuture<T> implements Future<T> {
 
     private CountDownLatch countDownLatch = new CountDownLatch(1);
 
+
     @Override
     public boolean cancel(boolean mayInterruptIfRunning) {
         return false;
@@ -54,5 +55,15 @@ public class TigerRpcResponseFuture<T> implements Future<T> {
     public void setResponse(T response) {
         this.response = response;
         this.countDownLatch.countDown();
+    }
+
+    /**
+     * 获取异步上下文结果
+     * @param timeout 超时时间
+     * @param unit 单位
+     * @return
+     */
+    public static Object getAsyncResponse(long timeout, TimeUnit unit) {
+        return null;
     }
 }

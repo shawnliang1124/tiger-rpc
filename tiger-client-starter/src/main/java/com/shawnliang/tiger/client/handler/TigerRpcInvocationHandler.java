@@ -1,8 +1,10 @@
 package com.shawnliang.tiger.client.handler;
 
+import com.shawnliang.tiger.client.annonations.CallRpc;
 import com.shawnliang.tiger.client.proxy.javaassist.UselessInvocationHandler;
 import com.shawnliang.tiger.client.transport.TigerRpcClientTransport;
 import com.shawnliang.tiger.client.transport.TransMetaInfo;
+import com.shawnliang.tiger.core.common.TigerRpcConstant;
 import com.shawnliang.tiger.core.common.TigerRpcRequest;
 import com.shawnliang.tiger.core.common.TigerRpcResponse;
 import com.shawnliang.tiger.core.exception.RpcException;
@@ -10,6 +12,7 @@ import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 
 /**
  * Description :   动态代理，去发送tcp请求.
@@ -51,6 +54,10 @@ public class TigerRpcInvocationHandler extends Proxy implements InvocationHandle
         tigerRpcRequest.setParams(args);
         tigerRpcRequest.setParamsType(method.getParameterTypes());
 
+        // 是否异步调用
+        CallRpc callRpc = method.getAnnotation(CallRpc.class);
+
+
         TigerRpcResponse response = clientTransport.sendRequest(transMetaInfo);
         if (response == null) {
             log.error("rpc 请求超时");
@@ -59,4 +66,39 @@ public class TigerRpcInvocationHandler extends Proxy implements InvocationHandle
 
         return response.getData();
     }
+
+
+    /**
+     * 执行调用rpc的方法
+     * @param callRpc
+     * @return
+     * @throws Throwable
+     */
+    private Object doWithCallRpc(CallRpc callRpc) throws Throwable {
+        Object rtn = null;
+
+        // 同步调用
+        if (callRpc == null || StringUtils.equals(callRpc.method(), TigerRpcConstant.SYNC)) {
+//            transMetaInfo.setCallType(TigerRpcConstant.SYNC);
+            TigerRpcResponse response = clientTransport.sendRequest(transMetaInfo);
+            if (response == null) {
+                log.error("rpc 请求超时");
+                throw new RpcException("rpc调用结果失败，请求超时：timeout" + transMetaInfo.getTimeout());
+            }
+
+            rtn = response.getData();
+        }
+        // 异步调用，无需马上得到返回值
+        else if (StringUtils.equals(callRpc.method(), TigerRpcConstant.FUTURE)) {
+            clientTransport.sendRequestAsync(transMetaInfo);
+            // 直接返回空
+
+        }
+
+        return rtn;
+    }
+
+
+
+
 }

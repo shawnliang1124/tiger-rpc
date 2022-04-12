@@ -5,6 +5,7 @@ import com.shawnliang.tiger.client.proxy.ClientStubProxyFactory;
 import com.shawnliang.tiger.client.transport.TigerRpcClientTransport;
 import com.shawnliang.tiger.client.transport.TransMetaInfo;
 import com.shawnliang.tiger.core.common.ServiceInfo;
+import com.shawnliang.tiger.core.common.TigerRpcConstant;
 import com.shawnliang.tiger.core.common.TigerRpcRequest;
 import com.shawnliang.tiger.core.discovery.DiscoveryService;
 import com.shawnliang.tiger.core.exception.RpcException;
@@ -120,6 +121,7 @@ public class TigerRpcClientProcessor implements BeanFactoryPostProcessor, Applic
                 .port(serviceInfo.getPort())
                 .timeout(properties.getTimeout())
                 .request(null)
+//                .callType(TigerRpcConstant.FUTURE)
                 .build();
 
     }

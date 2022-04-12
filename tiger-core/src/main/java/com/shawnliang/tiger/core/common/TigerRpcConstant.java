@@ -14,4 +14,12 @@ public class TigerRpcConstant {
     public static final String[] SPI_BASE_PATHS =
             new String[]{"META-INF/tiger-rpc/"};
 
+
+    public static final String FUTURE = "future";
+
+    public static final String SYNC = "sync";
+
+    public static final String ONE_WAY = "one_way";
+
+    public static final String CALL_BACK = "callback";
 }
