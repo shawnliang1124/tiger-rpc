@@ -37,5 +37,5 @@ public class TransMetaInfo {
     /**
      * 调用方式
      */
-//    private String callType;
+    private String invokeType;
 }

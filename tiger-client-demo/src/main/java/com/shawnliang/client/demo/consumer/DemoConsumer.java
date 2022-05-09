@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class DemoConsumer implements IDemoConsumer {
 
-    @TigerRpcReference(version = "1.0")
+    @TigerRpcReference(version = "1.0", invoke = "async")
     private HelloService helloService;
 
     public String doConsume(String word) {

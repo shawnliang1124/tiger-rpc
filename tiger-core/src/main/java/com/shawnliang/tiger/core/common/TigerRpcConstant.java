@@ -15,7 +15,7 @@ public class TigerRpcConstant {
             new String[]{"META-INF/tiger-rpc/"};
 
 
-    public static final String FUTURE = "future";
+    public static final String ASYNC = "async";
 
     public static final String SYNC = "sync";
 

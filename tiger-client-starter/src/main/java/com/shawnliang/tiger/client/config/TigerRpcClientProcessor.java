@@ -5,7 +5,6 @@ import com.shawnliang.tiger.client.proxy.ClientStubProxyFactory;
 import com.shawnliang.tiger.client.transport.TigerRpcClientTransport;
 import com.shawnliang.tiger.client.transport.TransMetaInfo;
 import com.shawnliang.tiger.core.common.ServiceInfo;
-import com.shawnliang.tiger.core.common.TigerRpcConstant;
 import com.shawnliang.tiger.core.common.TigerRpcRequest;
 import com.shawnliang.tiger.core.discovery.DiscoveryService;
 import com.shawnliang.tiger.core.exception.RpcException;
@@ -76,7 +75,7 @@ public class TigerRpcClientProcessor implements BeanFactoryPostProcessor, Applic
                                 .genDefaultRequest(serviceName);
 
                         // 创建tcp连接时的请求对象
-                        TransMetaInfo transMetaInfo = buildTransMetaInfoWithoutRequest(serviceName);
+                        TransMetaInfo transMetaInfo = buildTransMetaInfoWithoutRequest(serviceName, tigerRpcReference.invoke());
                         transMetaInfo.setRequest(tigerRpcRequest);
 
                         // 获得代理对象
@@ -103,7 +102,7 @@ public class TigerRpcClientProcessor implements BeanFactoryPostProcessor, Applic
      * 构建请求参数
      * @return
      */
-    private TransMetaInfo buildTransMetaInfoWithoutRequest(String serviceName){
+    private TransMetaInfo buildTransMetaInfoWithoutRequest(String serviceName, String invokeType){
 
         ServiceInfo serviceInfo = null;
         try {
@@ -120,8 +119,8 @@ public class TigerRpcClientProcessor implements BeanFactoryPostProcessor, Applic
                 .address(serviceInfo.getAddress())
                 .port(serviceInfo.getPort())
                 .timeout(properties.getTimeout())
+                .invokeType(invokeType)
                 .request(null)
-//                .callType(TigerRpcConstant.FUTURE)
                 .build();
 
     }

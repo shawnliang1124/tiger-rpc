@@ -1,6 +1,5 @@
 package com.shawnliang.tiger.client.handler;
 
-import com.shawnliang.tiger.client.annonations.CallRpc;
 import com.shawnliang.tiger.client.proxy.javaassist.UselessInvocationHandler;
 import com.shawnliang.tiger.client.transport.TigerRpcClientTransport;
 import com.shawnliang.tiger.client.transport.TransMetaInfo;
@@ -55,31 +54,24 @@ public class TigerRpcInvocationHandler extends Proxy implements InvocationHandle
         tigerRpcRequest.setParamsType(method.getParameterTypes());
 
         // 是否异步调用
-        CallRpc callRpc = method.getAnnotation(CallRpc.class);
+        String invokeType = transMetaInfo.getInvokeType();
 
-
-        TigerRpcResponse response = clientTransport.sendRequest(transMetaInfo);
-        if (response == null) {
-            log.error("rpc 请求超时");
-            throw new RpcException("rpc调用结果失败，请求超时：timeout" + transMetaInfo.getTimeout());
-        }
-
-        return response.getData();
+        Object rtn = doWithCallRpc(invokeType);
+        return rtn;
     }
 
 
     /**
      * 执行调用rpc的方法
-     * @param callRpc
+     * @param invokeType
      * @return
      * @throws Throwable
      */
-    private Object doWithCallRpc(CallRpc callRpc) throws Throwable {
+    private Object doWithCallRpc(String invokeType) throws Throwable {
         Object rtn = null;
 
         // 同步调用
-        if (callRpc == null || StringUtils.equals(callRpc.method(), TigerRpcConstant.SYNC)) {
-//            transMetaInfo.setCallType(TigerRpcConstant.SYNC);
+        if (StringUtils.equals(invokeType, TigerRpcConstant.SYNC)) {
             TigerRpcResponse response = clientTransport.sendRequest(transMetaInfo);
             if (response == null) {
                 log.error("rpc 请求超时");
@@ -89,7 +81,7 @@ public class TigerRpcInvocationHandler extends Proxy implements InvocationHandle
             rtn = response.getData();
         }
         // 异步调用，无需马上得到返回值
-        else if (StringUtils.equals(callRpc.method(), TigerRpcConstant.FUTURE)) {
+        else if (StringUtils.equals(invokeType, TigerRpcConstant.ASYNC)) {
             clientTransport.sendRequestAsync(transMetaInfo);
             // 直接返回空
 

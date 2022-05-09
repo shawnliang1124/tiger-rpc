@@ -25,4 +25,10 @@ public @interface TigerRpcReference {
      */
     String version() default "1.0";
 
+    /***
+     * 调用方式 默认是同步
+     * @return
+     */
+    String invoke() default "sync";
+
 }

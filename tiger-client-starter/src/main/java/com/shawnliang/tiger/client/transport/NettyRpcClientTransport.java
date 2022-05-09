@@ -52,6 +52,7 @@ public class NettyRpcClientTransport implements TigerRpcClientTransport{
     public void sendRequestAsync(TransMetaInfo transMetaInfo) throws Exception {
         // 发送完请求直接结束，释放调用线程
         TigerRpcResponseFuture<TigerRpcResponse> future = doSendRequest(transMetaInfo);
+        log.info("异步请求，直接返回。。future: {}", future);
     }
 
     private TigerRpcResponseFuture<TigerRpcResponse>  doSendRequest(TransMetaInfo transMetaInfo)
@@ -60,6 +61,12 @@ public class NettyRpcClientTransport implements TigerRpcClientTransport{
         TigerRpcResponseFuture<TigerRpcResponse> future = new TigerRpcResponseFuture<>();
         TransportCache.add(transMetaInfo.getRequest().getHeader().getRequestId(), future);
 
+       doSendByNetty(transMetaInfo);
+
+        return future;
+    }
+
+    private void doSendByNetty(TransMetaInfo transMetaInfo) throws InterruptedException {
         ChannelFuture channelFuture = bootstrap
                 .connect(transMetaInfo.getAddress(), transMetaInfo.getPort()).sync();
         channelFuture.addListener((cl) -> {
@@ -77,6 +84,5 @@ public class NettyRpcClientTransport implements TigerRpcClientTransport{
         // 写入数据请求
         channelFuture.channel().writeAndFlush(transMetaInfo.getRequest());
 
-        return future;
     }
 }

@@ -1,5 +1,6 @@
 package com.shawnliang.tiger.client.proxy;
 
+import com.shawnliang.tiger.client.annonations.CallRpc;
 import com.shawnliang.tiger.client.proxy.javaassist.UselessInvocationHandler;
 import com.shawnliang.tiger.client.transport.TigerRpcClientTransport;
 import com.shawnliang.tiger.client.transport.TransMetaInfo;
@@ -114,7 +115,6 @@ public class JavassistProxy implements TigerProxy {
                 ctClass.addMethod(CtMethod.make(methodStr, ctClass));
                 logger.info("make methodStr ok, str: [{}]", methodStr);
             }
-//            ctClass.debugWriteFile("D:\\java study\\tiger-rpc\\tiger-client-starter\\target\\classes");
 
             Class<?> tmpClazz = ctClass.toClass();
             Object instance = tmpClazz.newInstance();
@@ -230,22 +230,32 @@ public class JavassistProxy implements TigerProxy {
                     .append("tigerRpcRequest.setParams(params);")
                     .append("tigerRpcRequest.setParamsType(paramTypes);");
 
+            stringBuilder.append(CallRpc.class.getCanonicalName());
+            stringBuilder.append("  callRpc = method.getAnnotation( ")
+                    .append(CallRpc.class.getCanonicalName())
+                    .append(".class);");
+
+            stringBuilder.append("Object rtn = null;");
+            stringBuilder.append(" if (callRpc == null || callRpc.method().equals(\"sync\"))  {");
             stringBuilder.append(TigerRpcResponse.class.getCanonicalName())
                     .append(" response = ")
-                    .append("clientTransport.sendRequest(transMetaInfo);");
-
-            stringBuilder.append("if (response == null) {")
+                    .append(" clientTransport.sendRequest(transMetaInfo);")
+                    .append("if (response == null) {")
                     .append("throw new ")
                     .append(RpcException.class.getCanonicalName())
                     .append("(\"rpc调用结果失败，请求超时：timeout\" + transMetaInfo.getTimeout());")
+                    .append("}")
+                    .append("rtn = response.getData();")
                     .append("}");
 
-            if (returnType.equals(Void.class)) {
-                stringBuilder.append(" return;");
-            } else {
-                stringBuilder.append("Object ret = response.getData();");
-                stringBuilder.append(" return ").append(asArgument(returnType, "ret")).append(";");
-            }
+            stringBuilder.append(" else if (callRpc.method().equals(\"async\")) {")
+                    .append(" clientTransport.sendRequestAsync(transMetaInfo);")
+                    .append("}");
+
+            stringBuilder.append("return rtn ;")
+                    .append("}");
+
+
             stringBuilder.append("}");
             resultList.add(stringBuilder.toString());
             stringBuilder.delete(0, stringBuilder.length());
@@ -283,28 +293,6 @@ public class JavassistProxy implements TigerProxy {
         }
         return "(" + TigerClassUtils.getTypeStr(cl) + ")" + name;
     }
-//
-//    public java.lang.String sayHello(java.lang.String arg0) {
-//        Class clazz = com.shawnliang.server.demo.provider.HelloService.class;
-//        java.lang.reflect.Method method = method_1;
-//        Object[] params = new Object[1];
-//        Class[] paramTypes = new Class[1];
-//        params[0] = arg0;
-//        paramTypes[0] = java.lang.String.class;
-//        com.shawnliang.tiger.core.common.TigerRpcRequest tigerRpcRequest = transMetaInfo
-//                .getRequest();
-//        tigerRpcRequest.setMethod(method.getName());
-//        tigerRpcRequest.setParams(params);
-//        tigerRpcRequest.setParamsType(paramTypes);
-//        com.shawnliang.tiger.core.common.TigerRpcResponse response = clientTransport
-//                .sendRequest(transMetaInfo);
-//        if (response == null) {
-//            throw new com.shawnliang.tiger.core.exception.RpcException(
-//                    "rpc调用结果失败，请求超时：timeout" + transMetaInfo.getTimeout());
-//        }
-//        Object ret = response.getData();
-//        return (java.lang.String) ret;
-//    }
 
 
 }
