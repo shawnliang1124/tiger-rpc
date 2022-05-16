@@ -22,4 +22,6 @@ public class TigerRpcConstant {
     public static final String ONE_WAY = "one_way";
 
     public static final String CALL_BACK = "callback";
+
+    public static final String PROVIDER_CLIENT_CLOSE_TIME = "provider.client.close.time";
 }

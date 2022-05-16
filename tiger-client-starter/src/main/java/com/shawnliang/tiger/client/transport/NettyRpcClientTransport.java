@@ -55,6 +55,26 @@ public class NettyRpcClientTransport implements TigerRpcClientTransport{
         log.info("异步请求，直接返回。。future: {}", future);
     }
 
+    @Override
+    public void connect() {
+
+    }
+
+    @Override
+    public void destroy() {
+
+    }
+
+    @Override
+    public boolean isAvaliable() {
+        return false;
+    }
+
+    @Override
+    public int getCurrentCount() {
+        return 0;
+    }
+
     private TigerRpcResponseFuture<TigerRpcResponse>  doSendRequest(TransMetaInfo transMetaInfo)
             throws InterruptedException {
         // 写入，并且等待该请求

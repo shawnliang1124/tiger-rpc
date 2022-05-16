@@ -23,4 +23,26 @@ public interface TigerRpcClientTransport {
      */
     void sendRequestAsync(TransMetaInfo transMetaInfo) throws Exception;
 
+    /**
+     * 连接
+     */
+    void connect();
+
+    /**
+     * 销毁
+     */
+    void destroy();
+
+
+    /**
+     * 是否可用
+     * @return
+     */
+    boolean isAvaliable();
+
+    /**
+     * 获取当前的调用连接
+     * @return
+     */
+    int getCurrentCount();
 }
