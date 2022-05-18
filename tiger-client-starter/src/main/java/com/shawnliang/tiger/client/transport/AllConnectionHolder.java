@@ -22,7 +22,7 @@ import org.slf4j.LoggerFactory;
  * @date : Created in 2022/5/16
  */
 @TigerSpiImpl(value = "all")
-public class AllConnectionHolder implements ConnectionHolder{
+public class AllConnectionHolder implements ConnectionHolder {
 
     private static final Logger logger = LoggerFactory.getLogger(AllConnectionHolder.class);
 
@@ -62,7 +62,8 @@ public class AllConnectionHolder implements ConnectionHolder{
             }
 
             int threads = Math.max(10, providerSize);
-            Long destroyTime = TigerConfigs.getDefaultLong(TigerRpcConstant.PROVIDER_CLIENT_CLOSE_TIME);
+            Long destroyTime = TigerConfigs
+                    .getDefaultLong(TigerRpcConstant.PROVIDER_CLIENT_CLOSE_TIME);
             if (destroyTime == null) {
                 destroyTime = 10000L;
             }
@@ -71,31 +72,34 @@ public class AllConnectionHolder implements ConnectionHolder{
                     new LinkedBlockingDeque<>(providerSize),
                     new ThreadNameFactory("ALLCONNECTION-DESTROY"));
             CountDownLatch countDownLatch = new CountDownLatch(providerSize);
+            Long finalDestroyTime = destroyTime;
 
             removeClients.forEach((providerConfig, clientTransport) -> {
                 poolExecutor.submit(() -> {
-                    // TODO 进行client的关闭
-                    // TODO 依旧存在的请求需要等待结束后再关闭
+                    //  进行client的关闭
+                    //  依旧存在的请求需要等待结束后再关闭
+                    try {
+                        ClientTransFactory.releaseTrans(clientTransport, finalDestroyTime);
+                    } catch (Exception e) {
+                        logger.error("atch exception but ignore it when close alive client", e);
+                    } finally {
+                        countDownLatch.countDown();
+                    }
 
-                    
-
-                    countDownLatch.countDown();
                 });
             });
 
-
             try {
-                countDownLatch.await(destroyTime, TimeUnit.MILLISECONDS);
+                long totalTimeout =
+                        ((providerSize % threads == 0) ? (providerSize / threads) : ((providerSize /
+                                threads) + 1)) * destroyTime + 500;
+                countDownLatch.await(totalTimeout, TimeUnit.MILLISECONDS);
             } catch (InterruptedException e) {
-                logger.error("close connections error,"
-                        + " wait occur exception, wait timeout: {}", destroyTime, e);
-
+                logger.error("Exception when close transport", e);
+            } finally {
+                poolExecutor.shutdown();
             }
-
-
         }
-
-
 
     }
 
@@ -108,10 +112,12 @@ public class AllConnectionHolder implements ConnectionHolder{
 
     /**
      * 获得回收的client列表
+     *
      * @return
      */
     private Map<ProviderConfig, TigerRpcClientTransport> getRemoveClients() {
-        Map<ProviderConfig, TigerRpcClientTransport> removeClients = new HashMap<>(availableConnections);
+        Map<ProviderConfig, TigerRpcClientTransport> removeClients = new HashMap<>(
+                availableConnections);
 
         removeClients.putAll(subHealthConnections);
         removeClients.putAll(retryConnections);
