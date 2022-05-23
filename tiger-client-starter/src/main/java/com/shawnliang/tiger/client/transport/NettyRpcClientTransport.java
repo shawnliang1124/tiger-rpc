@@ -1,6 +1,5 @@
 package com.shawnliang.tiger.client.transport;
 
-import com.shawnliang.tiger.client.initilize.NettyClientInitializer;
 import com.shawnliang.tiger.core.common.TigerRpcResponse;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.ChannelFuture;
@@ -11,6 +10,7 @@ import io.netty.channel.epoll.EpollSocketChannel;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioSocketChannel;
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicLong;
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -25,14 +25,16 @@ public class NettyRpcClientTransport implements TigerRpcClientTransport{
     private final Bootstrap bootstrap;
     private final EventLoopGroup eventLoopGroup;
 
+    private static final AtomicLong requestCount = new AtomicLong(0);
+
     public NettyRpcClientTransport() {
         bootstrap = new Bootstrap();
         eventLoopGroup = Epoll.isAvailable() ? new EpollEventLoopGroup() : new NioEventLoopGroup();
 
         bootstrap.group(eventLoopGroup)
                 .channel(eventLoopGroup instanceof EpollEventLoopGroup ?
-                        EpollSocketChannel.class : NioSocketChannel.class)
-                .handler(new NettyClientInitializer());
+                        EpollSocketChannel.class : NioSocketChannel.class);
+//                .handler(new NettyClientInitializer(handler));
 
     }
 
@@ -77,13 +79,15 @@ public class NettyRpcClientTransport implements TigerRpcClientTransport{
         return 0;
     }
 
-    private TigerRpcResponseFuture<TigerRpcResponse>  doSendRequest(TransMetaInfo transMetaInfo)
+    private TigerRpcResponseFuture<TigerRpcResponse> doSendRequest(TransMetaInfo transMetaInfo)
             throws InterruptedException {
         // 写入，并且等待该请求
         TigerRpcResponseFuture<TigerRpcResponse> future = new TigerRpcResponseFuture<>();
         TransportCache.add(transMetaInfo.getRequest().getHeader().getRequestId(), future);
 
        doSendByNetty(transMetaInfo);
+
+        requestCount.incrementAndGet();
 
         return future;
     }
