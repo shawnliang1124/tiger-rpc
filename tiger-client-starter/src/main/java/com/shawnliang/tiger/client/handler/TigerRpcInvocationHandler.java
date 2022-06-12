@@ -83,7 +83,6 @@ public class TigerRpcInvocationHandler extends Proxy implements InvocationHandle
         // 异步调用，无需马上得到返回值
         else if (StringUtils.equals(invokeType, TigerRpcConstant.ASYNC)) {
             clientTransport.sendRequestAsync(transMetaInfo);
-            // 直接返回空
 
         }
 

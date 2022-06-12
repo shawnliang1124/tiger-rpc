@@ -1,14 +1,15 @@
 package com.shawnliang.tiger.client.transport;
 
+import com.shawnliang.tiger.client.handler.TigerRpcClientHandler;
+import com.shawnliang.tiger.core.codec.TigerRpcClientDecoder;
+import com.shawnliang.tiger.core.codec.TigerRpcClientEncoder;
+import com.shawnliang.tiger.core.common.NettyConnection;
+import com.shawnliang.tiger.core.common.TigerRpcConstant;
 import com.shawnliang.tiger.core.common.TigerRpcResponse;
-import io.netty.bootstrap.Bootstrap;
-import io.netty.channel.ChannelFuture;
-import io.netty.channel.EventLoopGroup;
-import io.netty.channel.epoll.Epoll;
-import io.netty.channel.epoll.EpollEventLoopGroup;
-import io.netty.channel.epoll.EpollSocketChannel;
-import io.netty.channel.nio.NioEventLoopGroup;
-import io.netty.channel.socket.nio.NioSocketChannel;
+import com.shawnliang.tiger.core.common.UrlInfo;
+import com.shawnliang.tiger.core.connections.ConnectSelectStrategy;
+import com.shawnliang.tiger.core.connections.DefaultConnectionFactory;
+import com.shawnliang.tiger.core.utils.RemotingUtil;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicLong;
 import lombok.extern.slf4j.Slf4j;
@@ -22,20 +23,18 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class NettyRpcClientTransport implements TigerRpcClientTransport{
 
-    private final Bootstrap bootstrap;
-    private final EventLoopGroup eventLoopGroup;
 
     private static final AtomicLong requestCount = new AtomicLong(0);
 
-    public NettyRpcClientTransport() {
-        bootstrap = new Bootstrap();
-        eventLoopGroup = Epoll.isAvailable() ? new EpollEventLoopGroup() : new NioEventLoopGroup();
+    private DefaultConnectionFactory defaultConnectionFactory ;
 
-        bootstrap.group(eventLoopGroup)
-                .channel(eventLoopGroup instanceof EpollEventLoopGroup ?
-                        EpollSocketChannel.class : NioSocketChannel.class);
-//                .handler(new NettyClientInitializer(handler));
 
+    public NettyRpcClientTransport(ConnectSelectStrategy selectStrategy) {
+
+        TigerRpcClientHandler connectionEventHandler = new TigerRpcClientHandler();
+        defaultConnectionFactory = new DefaultConnectionFactory(null, connectionEventHandler,
+                new TigerRpcClientEncoder(), new TigerRpcClientDecoder(), selectStrategy);
+        defaultConnectionFactory.init(null);
     }
 
 
@@ -55,8 +54,7 @@ public class NettyRpcClientTransport implements TigerRpcClientTransport{
     @Override
     public void sendRequestAsync(TransMetaInfo transMetaInfo) throws Exception {
         // 发送完请求直接结束，释放调用线程
-        TigerRpcResponseFuture<TigerRpcResponse> future = doSendRequest(transMetaInfo);
-        log.info("异步请求，直接返回。。future: {}", future);
+        doSendRequest(transMetaInfo);
     }
 
     @Override
@@ -79,36 +77,71 @@ public class NettyRpcClientTransport implements TigerRpcClientTransport{
         return 0;
     }
 
-    private TigerRpcResponseFuture<TigerRpcResponse> doSendRequest(TransMetaInfo transMetaInfo)
-            throws InterruptedException {
-        // 写入，并且等待该请求
-        TigerRpcResponseFuture<TigerRpcResponse> future = new TigerRpcResponseFuture<>();
-        TransportCache.add(transMetaInfo.getRequest().getHeader().getRequestId(), future);
+    private TigerRpcResponseFuture<TigerRpcResponse> doSendRequest(TransMetaInfo transMetaInfo) {
+        TigerRpcResponseFuture<TigerRpcResponse> future = null;
+        String invokeType = transMetaInfo.getInvokeType();
+        switch (invokeType) {
+            case TigerRpcConstant
+                    .ASYNC:
+                doSendByNetty(transMetaInfo);
+            break;
 
-       doSendByNetty(transMetaInfo);
+            case TigerRpcConstant.SYNC:
+                // 写入，并且等待该请求
+                future = new TigerRpcResponseFuture<>();
+                TransportCache.add(transMetaInfo.getRequest().getHeader().getRequestId(), future);
+
+                doSendByNetty(transMetaInfo);
+            break;
+
+            default:
+                break;
+
+        }
 
         requestCount.incrementAndGet();
 
         return future;
     }
 
-    private void doSendByNetty(TransMetaInfo transMetaInfo) throws InterruptedException {
-        ChannelFuture channelFuture = bootstrap
-                .connect(transMetaInfo.getAddress(), transMetaInfo.getPort()).sync();
-        channelFuture.addListener((cl) -> {
-            if (cl.isSuccess()) {
-                log.info("netty tcp connect success, address: {}, port: {}",
-                        transMetaInfo.getAddress(), transMetaInfo.getPort());
-            } else {
-                log.info("netty tcp connect failed, address: {}, port: {}",
-                        transMetaInfo.getAddress(), transMetaInfo.getPort());
-                channelFuture.cause().printStackTrace();
-                eventLoopGroup.shutdownGracefully();
-            }
-        });
+    /**
+     * 使用netty 的channel发送消息
+     * @param transMetaInfo
+     */
+    private void doSendByNetty(TransMetaInfo transMetaInfo) {
+        // todo 从连接池中获取连接
+        UrlInfo urlInfo = buildByTransMetaInfo(transMetaInfo);
+        NettyConnection connection = defaultConnectionFactory.getAndCreateIfNotExist(urlInfo);
 
-        // 写入数据请求
-        channelFuture.channel().writeAndFlush(transMetaInfo.getRequest());
+        // do some checks
+        defaultConnectionFactory.check(connection);
 
+        try {
+            connection.getChannel().writeAndFlush(transMetaInfo.getRequest()).addListener((future -> {
+                if (!future.isSuccess()) {
+                    log.error("send failed!, the address is: {}",
+                            RemotingUtil.parseLocalAddress(connection.getChannel()), future.cause());
+                } else {
+                    log.info("send success, msg: {}", transMetaInfo.getRequest());
+                }
+            }));
+        } catch (Exception e) {
+            log.error("send request failed!, address: {}", RemotingUtil.parseLocalAddress(connection.getChannel()), e);
+        }
+
+    }
+
+    /**
+     * build  url info by trans meta
+     * @param transMetaInfo
+     * @return
+     */
+    private UrlInfo buildByTransMetaInfo(TransMetaInfo transMetaInfo) {
+        UrlInfo urlInfo = new UrlInfo(transMetaInfo.getAddress(), transMetaInfo.getPort(), transMetaInfo.getProtocol());
+        urlInfo.setConnectTimeout(transMetaInfo.getTimeout());
+        urlInfo.setConnNum(transMetaInfo.getConnectNum());
+
+
+        return urlInfo;
     }
 }

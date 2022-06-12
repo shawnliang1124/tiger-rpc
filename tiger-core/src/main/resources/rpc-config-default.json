@@ -16,6 +16,7 @@ PS:大家也看到了，本JSON文档是支持注释的，而标准JSON是不支
   "default.client.timeout": 3000,
   "default.client.discoveryAddr": "",
   "default.route.strategy": "loadBalance",
+  "default.conn.strategy": "random",
 
   // server端的配置
   "default.server.port": 11000,

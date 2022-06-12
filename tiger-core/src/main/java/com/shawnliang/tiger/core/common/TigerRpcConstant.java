@@ -24,4 +24,11 @@ public class TigerRpcConstant {
     public static final String CALL_BACK = "callback";
 
     public static final String PROVIDER_CLIENT_CLOSE_TIME = "provider.client.close.time";
+
+    public static final String CONN_STATUS = "conn_status";
+    public static final String CONN_STATUS_ON = "on";
+    public static final String CONN_STATUS_OFF = "off";
+
+
+    public static final int DEFAULT_CONN_NUM = 1;
 }

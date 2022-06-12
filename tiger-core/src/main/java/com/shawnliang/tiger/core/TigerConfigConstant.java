@@ -27,4 +27,7 @@ public class TigerConfigConstant {
     public static final String SERVER_REGISTRY_ADDR = "default.server.registryAddr";
 
     public static final String ROUTE_STRATEGY_KEY = "default.route.strategy";
+
+    public static final String CONN_STRATEGY_KEY = "default.conn.strategy";
+
 }

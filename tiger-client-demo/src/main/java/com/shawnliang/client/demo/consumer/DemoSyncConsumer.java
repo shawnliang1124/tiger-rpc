@@ -8,10 +8,10 @@ import org.springframework.stereotype.Service;
  * Description :   .
  *
  * @author : Phoebe
- * @date : Created in 2022/2/13
+ * @date : Created in 2022/6/12
  */
 @Service
-public class DemoConsumer implements IDemoConsumer {
+public class DemoSyncConsumer implements IDemoConsumer{
 
     @TigerRpcReference(version = "1.0", invoke = "sync")
     private HelloService helloService;

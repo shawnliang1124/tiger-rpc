@@ -75,7 +75,7 @@ public class TigerRpcClientProcessor implements BeanFactoryPostProcessor, Applic
                                 .genDefaultRequest(serviceName);
 
                         // 创建tcp连接时的请求对象
-                        TransMetaInfo transMetaInfo = buildTransMetaInfoWithoutRequest(serviceName, tigerRpcReference.invoke());
+                        TransMetaInfo transMetaInfo = buildTransMetaInfoWithoutRequest(serviceName, tigerRpcReference);
                         transMetaInfo.setRequest(tigerRpcRequest);
 
                         // 获得代理对象
@@ -102,7 +102,7 @@ public class TigerRpcClientProcessor implements BeanFactoryPostProcessor, Applic
      * 构建请求参数
      * @return
      */
-    private TransMetaInfo buildTransMetaInfoWithoutRequest(String serviceName, String invokeType){
+    private TransMetaInfo buildTransMetaInfoWithoutRequest(String serviceName, TigerRpcReference tigerRpcReference){
 
         ServiceInfo serviceInfo = null;
         try {
@@ -119,7 +119,8 @@ public class TigerRpcClientProcessor implements BeanFactoryPostProcessor, Applic
                 .address(serviceInfo.getAddress())
                 .port(serviceInfo.getPort())
                 .timeout(properties.getTimeout())
-                .invokeType(invokeType)
+                .invokeType(tigerRpcReference.invoke())
+                .connectNum(tigerRpcReference.connectNum())
                 .request(null)
                 .build();
 

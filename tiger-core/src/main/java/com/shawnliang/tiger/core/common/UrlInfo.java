@@ -28,7 +28,7 @@ public class UrlInfo {
     /**
      * 地址的超时时间
      */
-    private int connectTimeout;
+    private long connectTimeout;
 
     private Properties properties;
 
@@ -40,5 +40,8 @@ public class UrlInfo {
         this.ip = ip;
         this.port = port;
         this.protocol = protocol;
+
+        // 唯一key = ip:端口
+        this.uniKey = ip + ":" + port;
     }
 }

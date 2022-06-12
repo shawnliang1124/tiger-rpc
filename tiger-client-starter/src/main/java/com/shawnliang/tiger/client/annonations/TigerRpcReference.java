@@ -31,4 +31,10 @@ public @interface TigerRpcReference {
      */
     String invoke() default "sync";
 
+    /**
+     * 长连接池的个数
+     * @return
+     */
+    int connectNum() default 1;
+
 }

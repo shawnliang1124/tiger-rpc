@@ -38,4 +38,14 @@ public class TransMetaInfo {
      * 调用方式
      */
     private String invokeType;
+
+    /**
+     * 协议格式
+     */
+    private String protocol = "";
+
+    /**
+     * 长连接的个数
+     */
+    private int connectNum;
 }

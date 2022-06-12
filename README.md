@@ -44,7 +44,7 @@ public class HelloServiceImpl implements HelloService{
 
 ## todo
 - ~~实现SPI机制，支持多注册中心，多协议化方式 (已完成)~~
-- 使用长连接进行tcp交互（进行中）
+- ~~使用长连接进行tcp交互（已完成）~~
 - netty 高低水位实现
 - client本地存储server的注册表，不用每次都到zk去拉取
 - netty的交互方式是否有优化的空间

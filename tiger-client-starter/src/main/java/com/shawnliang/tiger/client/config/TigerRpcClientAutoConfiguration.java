@@ -5,6 +5,7 @@ import com.shawnliang.tiger.client.transport.NettyRpcClientTransport;
 import com.shawnliang.tiger.client.transport.TigerRpcClientTransport;
 import com.shawnliang.tiger.core.TigerConfigConstant;
 import com.shawnliang.tiger.core.TigerConfigs;
+import com.shawnliang.tiger.core.connections.ConnectSelectStrategy;
 import com.shawnliang.tiger.core.discovery.DiscoveryService;
 import com.shawnliang.tiger.core.route.IRoute;
 import com.shawnliang.tiger.core.spi.TigerSpiClass;
@@ -83,7 +84,13 @@ public class TigerRpcClientAutoConfiguration {
     @Bean
     @ConditionalOnMissingBean
     public TigerRpcClientTransport clientTransport() {
-       return new NettyRpcClientTransport();
+        String connStrategy = TigerConfigs
+                .getDefaultString(TigerConfigConstant.CONN_STRATEGY_KEY);
+        TigerSpiClass<? extends ConnectSelectStrategy> spiClass = TigerSpiClassLoaderFactory
+                .getSpiLoader(ConnectSelectStrategy.class).getSpiClass(connStrategy);
+
+        // TODO 是否选择健康的连接？
+       return new NettyRpcClientTransport(spiClass.getInstance());
     }
 
     @Bean

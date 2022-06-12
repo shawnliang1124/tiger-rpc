@@ -2,3 +2,7 @@
 .idea
 *target
 *.class
+/tiger-server-demo/target
+/tiger-client-demo/target
+/tiger-server-starter/target
+
